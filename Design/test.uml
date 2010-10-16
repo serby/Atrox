@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_419_wUXZEd684KuXFmnmxQ" name="Security">
+  <elementImport xmi:id="_46D1kEXZEd684KuXFmnmxQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_46SfEEXZEd684KuXFmnmxQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_46TGIEXZEd684KuXFmnmxQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_46TGIUXZEd684KuXFmnmxQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <elementImport xmi:id="_sgqzMEYqEd684KuXFmnmxQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_NF6cgEYqEd684KuXFmnmxQ" name="Security"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_dR0qcEYqEd684KuXFmnmxQ" name="IAuthorizationProvider">
+    <ownedOperation xmi:id="_a4dxkEhHEd684KuXFmnmxQ" name="isAllowed">
+      <ownedParameter xmi:id="_fpZxAEhHEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_fpa_IEhHEd684KuXFmnmxQ" name="identity"/>
+      <ownedParameter xmi:id="_fpbmMEhHEd684KuXFmnmxQ" name="type"/>
+      <ownedParameter xmi:id="_fpbmMUhHEd684KuXFmnmxQ" name="resource"/>
+      <ownedParameter xmi:id="_fpbmMkhHEd684KuXFmnmxQ" name="action"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_W4bOIEhIEd684KuXFmnmxQ" name="getResources">
+      <ownedParameter xmi:id="_ajxegEhIEd684KuXFmnmxQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_g6OUgEYqEd684KuXFmnmxQ" name="IAuthenticationProvider">
+    <ownedOperation xmi:id="_34FtIEhIEd684KuXFmnmxQ" name="getIentity">
+      <ownedParameter xmi:id="_57w1EEhIEd684KuXFmnmxQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_7qY6EEhIEd684KuXFmnmxQ" name="getType">
+      <ownedParameter xmi:id="_9BTpsEhIEd684KuXFmnmxQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_9ZPokEhIEd684KuXFmnmxQ" name="getToten">
+      <ownedParameter xmi:id="__NE9sEhIEd684KuXFmnmxQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_E7jjcEhJEd684KuXFmnmxQ" name="authenticate">
+      <ownedParameter xmi:id="_HsUa4EhJEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_HsUa4UhJEd684KuXFmnmxQ" name="identity"/>
+      <ownedParameter xmi:id="_HsVB8EhJEd684KuXFmnmxQ" name="password"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_KCaIgEhJEd684KuXFmnmxQ" name="deauthenticate">
+      <ownedParameter xmi:id="_M6Lm4EhJEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_M6Lm4UhJEd684KuXFmnmxQ" name="identity"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_POQiUEhJEd684KuXFmnmxQ" name="loadIdentity">
+      <ownedParameter xmi:id="_Rbz_AEhJEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_Rb0mEEhJEd684KuXFmnmxQ" name="identity"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_mallwEYqEd684KuXFmnmxQ" name="s">
+    <ownedOperation xmi:id="_daXbsEhJEd684KuXFmnmxQ" name="isAllowed">
+      <ownedParameter xmi:id="_hS07AEhJEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_hS07AUhJEd684KuXFmnmxQ" name="resource"/>
+      <ownedParameter xmi:id="_hS1iEEhJEd684KuXFmnmxQ" name="action"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_ipyG4EhJEd684KuXFmnmxQ" name="allow">
+      <ownedParameter xmi:id="_oHBLoEhJEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_oHBysEhJEd684KuXFmnmxQ" name="resource"/>
+      <ownedParameter xmi:id="_oHBysUhJEd684KuXFmnmxQ" name="action"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_oSOWEEhJEd684KuXFmnmxQ" name="disallow">
+      <ownedParameter xmi:id="_py5eoEhJEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_py5eoUhJEd684KuXFmnmxQ" name="resource"/>
+      <ownedParameter xmi:id="_py6FsEhJEd684KuXFmnmxQ" name="action"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_ruclUEhJEd684KuXFmnmxQ" name="getResources">
+      <ownedParameter xmi:id="_-5ihMEhJEd684KuXFmnmxQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_s4ldMEhJEd684KuXFmnmxQ" name="addIdentity">
+      <ownedParameter xmi:id="_HNYmsEhKEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_HNYmsUhKEd684KuXFmnmxQ" name="identity"/>
+      <ownedParameter xmi:id="_HNYmskhKEd684KuXFmnmxQ" name="type"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_DKSksEhKEd684KuXFmnmxQ" name="removeIdentity">
+      <ownedParameter xmi:id="_FTHSYEhKEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_FTHSYUhKEd684KuXFmnmxQ" name="identity"/>
+      <ownedParameter xmi:id="_FTH5cEhKEd684KuXFmnmxQ" name="type"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_INn7sEhKEd684KuXFmnmxQ" name="getRolesForIdentity" isStatic="true">
+      <ownedParameter xmi:id="_L6FmYEhKEd684KuXFmnmxQ" direction="return"/>
+      <ownedParameter xmi:id="_L6FmYUhKEd684KuXFmnmxQ" name="identity"/>
+      <ownedParameter xmi:id="_L6FmYkhKEd684KuXFmnmxQ" name="type"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_32QMAEhGEd684KuXFmnmxQ" name="IIdentity"/>
+</uml:Package>

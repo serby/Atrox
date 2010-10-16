@@ -1,0 +1,28 @@
+== Roadmap ==
+
+=== Core ===
+# Service Locator or Dependancy Injector
+# Application Model
+# Component Model
+# Build data persistence layer
+# Create new persistence adaptor for Couch
+# Create new persistence adaptor for Mongo
+# Build theming system
+# Revisit Storage Provider
+# HTML Widgets ported in
+# Form validation including JS support
+# New exceptions
+# Security
+# Routing
+
+== CMS ===
+# Switch to jQuery
+# Port pages from 5.0 convert in to themes
+
+ 
+=== 100% Complete ===
+# Logging 
+
+=== Unit Test ===
+# Logging
+
