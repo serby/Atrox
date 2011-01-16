@@ -70,7 +70,7 @@ class Atrox_Application_Application {
 	 * @param $className
 	 */
 	protected static function autoload($className) {
-		require(str_replace("_", "/", $className) . ".php");
+		require str_replace("_", "/", $className) . ".php";
 	}
 
 	/**

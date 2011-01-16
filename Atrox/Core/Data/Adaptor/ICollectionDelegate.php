@@ -15,7 +15,6 @@ interface Atrox_Core_Data_Adaptor_ICollectionDelegate {
 	public function read($id, $cached = true);
 	public function readByProperty($value, $propertyName, $cached = true);
 	public function update(Atrox_Core_Data_Entity $entity);
-	public function updateProperty(Atrox_Core_Data_Entity $entity, $propertyName, $newValue);
 	public function remove(Atrox_Core_Data_Entity $entity);
 	public function retrieve(Atrox_Core_Data_IFilter $filter = null);
 	public function count(Atrox_Core_Data_IFilter $filter = null);

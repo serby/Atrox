@@ -19,26 +19,19 @@ class Atrox_Core_Data_Adaptor_Collection {
 	protected $name;
 
 	/**
-	 * @var Atrox_Core_Data_EntitySchema
-	 */
-	protected $scheme;
-
-	/**
 	 * @var Atrox_Core_Data_Adaptor_ICollectionDelegate
 	 */
-	protected $collectionDelegate;
+	protected $delegate;
 
 	/**
 	 *
 	 * @param Atrox_Core_Data_IConnection $connection
 	 */
-	public function __construct($name, Atrox_Core_Data_EntitySchema $scheme,
-		Atrox_Core_Data_Adaptor_ICollectionDelegate $collectionDelegate) {
+	public function __construct($name, Atrox_Core_Data_Adaptor_ICollectionDelegate $delegate) {
 
 		$this->setName($name);
-		$this->connection = $connection;
+		$this->delegate = $delegate;
 
-		$this->scheme = $scheme;
 	}
 
 	/**

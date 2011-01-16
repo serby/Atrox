@@ -109,11 +109,11 @@ class Atrox_Core_ServiceLocator {
 	}
 
 	/**
-	 * Return the application wide logger.
+	 * Return the applications connection.
 	 *
-	 * @return Atrox_Core_Data_IConnection
+	 * @return Atrox_Core_Data_Adaptor_IConnection
 	 */
-	public static function getConnection($name = 0) {
+	public static function getConnection() {
 		throw new Exception("Connection has not been implemented");
 	}
 
