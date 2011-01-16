@@ -9,7 +9,7 @@
  * @copyright Clock Limited 2010
  * @license http://opensource.org/licenses/bsd-license.php New BSD License
  */
-abstract class Atrox_Core_Data_Adaptor_Collection {
+class Atrox_Core_Data_Adaptor_Collection {
 
 	/**
 	 * Friendly name of this collection. i.e. Contact, Basket
@@ -24,16 +24,16 @@ abstract class Atrox_Core_Data_Adaptor_Collection {
 	protected $scheme;
 
 	/**
-	 * @var Atrox_Core_Data_Adaptor_IConnection
+	 * @var Atrox_Core_Data_Adaptor_ICollectionDelegate
 	 */
-	protected $connection;
+	protected $collectionDelegate;
 
 	/**
 	 *
 	 * @param Atrox_Core_Data_IConnection $connection
 	 */
 	public function __construct($name, Atrox_Core_Data_EntitySchema $scheme,
-		Atrox_Core_Data_Adaptor_IConnection $connection) {
+		Atrox_Core_Data_Adaptor_ICollectionDelegate $collectionDelegate) {
 
 		$this->setName($name);
 		$this->connection = $connection;
@@ -49,13 +49,6 @@ abstract class Atrox_Core_Data_Adaptor_Collection {
 	protected function setName($name) {
 		$this->name = $name;
 		$this->parsedName = $this->connection->parseName($name);
-	}
-
-	/**
-	 * @return Atrox_Core_Data_IConnection
-	 */
-	public function getConnection() {
-		return $this->connection;
 	}
 
 	/**
@@ -97,13 +90,4 @@ abstract class Atrox_Core_Data_Adaptor_Collection {
 
 		return $entity;
 	}
-
-	public abstract function add(Atrox_Core_Data_Entity $entity);
-	public abstract function read($id, $cached = true);
-	public abstract function readByProperty($value, $propertyName, $cached = true);
-	public abstract function update(Atrox_Core_Data_Entity $entity);
-	public abstract function updateProperty(Atrox_Core_Data_Entity $entity, $propertyName, $newValue);
-	public abstract function remove(Atrox_Core_Data_Entity $entity);
-	public abstract function retrieve(Atrox_Core_Data_IFilter $filter = null);
-	public abstract function count(Atrox_Core_Data_IFilter $filter = null);
 }
