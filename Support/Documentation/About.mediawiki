@@ -1,0 +1,4 @@
+== About Atrox ==
+
+=== ORM / Persistance Abstraction Layer ===
+We do not beleive that a developer working on your application should be able to simply persist/save/store/insert/update a domain object/entity whenever then want. This action of persisting of domain object should be well defined within the context of the domain model.
