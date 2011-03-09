@@ -106,4 +106,15 @@ interface Atrox_Core_Caching_ICacheManager {
 	 * @return array All the contents of the cache
 	 */
 	public function listContents($filter = null);
+
+	/**
+	 * Calls a function and caches the results
+	 *
+	 * @param string $function The function to call
+	 * @param array $arguments
+	 * @param int $expire When the cache expires
+	 *
+	 * @return mixed The result
+	 */
+	public function call($function, array $arguments, $tags = false, $expire = false);
 }

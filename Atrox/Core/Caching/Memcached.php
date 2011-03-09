@@ -1,4 +1,5 @@
 <?php
+require "ICacheManager.php";
 
 /**
  * @package Core
@@ -171,11 +172,11 @@ class Atrox_Core_Caching_Memcached implements Atrox_Core_Caching_ICacheManager {
 	public function getFileContents($filename, $expire = false, $context = null) {
 		$key = $this->keyPrefix . "__File:" . md5($filename);
 		if ($data = $this->memcache->get($key)) {
- 			return $data;
+			return $data;
 		} else {
 			try {
- 				$data = @file_get_contents($filename, 0, $context);
- 				$this->memcache->set($key, $data, false, $expire);
+				$data = @file_get_contents($filename, 0, $context);
+				$this->memcache->set($key, $data, false, $expire);
 			} catch(Exception $e) {
 				echo $e->getMessage();
 				throw new Atrox_Core_Exception_NoSuchFileException("'{$filename}' does not exist");
@@ -194,22 +195,36 @@ class Atrox_Core_Caching_Memcached implements Atrox_Core_Caching_ICacheManager {
 	}
 
 	public function listContents($filter = null) {
-    $list = array();
-    $allSlabs = $this->memcache->getExtendedStats("slabs");
-    $items = $this->memcache->getExtendedStats("items");
-    foreach ($allSlabs as $server => $slabs) {
-    	foreach ($slabs as $slabId => $slabMeta) {
-    		$cdump = $this->memcache->getExtendedStats("cachedump", (int)$slabId);
-    		foreach ($cdump as $server => $entries) {
-    			if($entries) {
-    				foreach($entries as $eName => $eData) {
-    					$list[] = $eName;
-    				}
-    			}
-    		}
-    	}
-    }
-    sort($list);
-    return $list;
+		$list = array();
+		$allSlabs = $this->memcache->getExtendedStats("slabs");
+		$items = $this->memcache->getExtendedStats("items");
+		foreach ($allSlabs as $server => $slabs) {
+			foreach ($slabs as $slabId => $slabMeta) {
+				$cdump = $this->memcache->getExtendedStats("cachedump", (int)$slabId);
+				foreach ($cdump as $server => $entries) {
+					if($entries) {
+						foreach($entries as $eName => $eData) {
+							$list[] = $eName;
+						}
+					}
+				}
+			}
+		}
+		sort($list);
+		return $list;
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see Application/Atrox/core/Caching/Atrox_Core_Caching_ICacheManager::call()
+	 */
+	public function call($function, array $arguments, $tags = false, $expire = false) {
+		$key = "{$function}:" . sha1(print_r($arguments, true));
+		if ($returnValue = $this->get($key)) {
+			return $returnValue;
+		}
+		$returnValue = call_user_func_array($function, $arguments);
+		$this->set($key, $returnValue, $tags, $expire);
+		return $returnValue;
 	}
 }
